@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4c2c2;
+}
+code {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+/*---------------------------------Home Page--------------------------------*/
+/*-----Header-Title--------*/
+h1 {
+  font-family: cursive;
+  font-size: 75px;
+  line-height: 0.1em;
+  text-align: center;
+  color: darkblue;
+}
+h2 {
+  font-family: cursive;
+  font-size: 35px;
+  color: darkblue;
+}
+/*-----------Form----------*/
+#home-container {
+  align-items: center;
+  margin-left: 30px;
+}
+/*-----Form-Title--------*/
+#pageTitle {
+  display: flex;
+  margin-top: -30px;
+  margin-left: 130px;
+}
+#formEntry {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
+
+#formText {
+  margin-top: 5px;
+}
+label {
+  color: darkblue;
+}
+/*-----Tags styling--------*/
+#tagTitle {
+  color: darkblue;
+  font-size: 18px;
+  font-family: cursive;
+}
+
+.tag:hover {
+  cursor: pointer;
+}
+
+#tag-right,
+#tag-left {
+  display: flex;
+  flex-direction: row;
+  color: darkblue;
+  font-family: cursive;
+}
+/*-----submit button-------*/
+#submit {
+  width: 40vw;
+}
+
+#submit:hover {
+  cursor: pointer;
+}
+
+/*---------------------------------NavBar Page--------------------------------*/
+#NavContainerLink {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  font-size: 1.5rem;
+  background-image: -moz-radial-gradient(#ad2503, #4315cc);
+  color: darkblue;
+  font-family: cursive;
+}
+#nav-bar {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*---------------------------------EditDelete Page--------------------------------*/
+
+/*---------------------------------Modal-page--------------------------------*/
+#modalButtons {
+  font-size: 2rem;
+  color: darkblue;
+  height: 10px;
+  width: 20px;
+  background-color: darkgray;
+  border-radius: 25px;
+}
+
+#modalContainer {
+  display: flex;
+}
