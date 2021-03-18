@@ -10,7 +10,7 @@ function Home(props) {
 
                 <input id="formTitle" type="text" name="title" placeholder="Title" />
 
-                <textarea id="formText" type="text" name="text" cols="30" rows="15" placeholder="Enter your Journal Entry here" />
+                <textarea id="formText" type="text" name="content" placeholder="Enter your Journal Post here" />
                 {/*labels for different tags are set up */}
                 <label id='tagTitle'>Choose Tag for your Entry:</label>
                 <div id='tag-right'>

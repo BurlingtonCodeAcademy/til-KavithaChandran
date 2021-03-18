@@ -22,7 +22,7 @@ function NavBar(props) {
                 <Link id='NavContainerLink' to={"/"}>Home
             </Link>
                 {/* this link will take you to a page with all journal entries*/}
-                <Link id='NavContainerLink' to={"/Facts"}>All Entries
+                <Link id='NavContainerLink' to={"/Facts"}> Entries
             </Link>
             </header>
         </div>

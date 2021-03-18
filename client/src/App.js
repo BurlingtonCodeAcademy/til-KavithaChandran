@@ -17,13 +17,13 @@ function App() {
       <NavBar />
       <Switch>
         {/*Route directing the user to Home Page */}
-        <Route exact path='/' component={Home} />
+        <Route exact path={'/'}component={Home} />
         {/*Route directing the user to Facts Page */}
-        <Route path="/facts" component={Facts} />
+        <Route path={"/Facts"} component={Facts} />
         {/*Route directing the user to specific entry page Page */}
-        <Route path="/facts/:objectId" component={EditDelete} />
+        <Route path={"/EditDelete"} component={EditDelete} />
         {/*when the route is not found, it displays and takes you to the to the 404 page */}
-        <Route path="*" component={NotFound} />
+        <Route path={"*"} component={NotFound} />
       </Switch>
     </div>
 
