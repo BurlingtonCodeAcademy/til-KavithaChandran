@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Modal from './Modal'
+import moment from 'moment'
 
 //function to edit and the delete an entry
 function EditDelete(props) {
@@ -36,9 +37,9 @@ function EditDelete(props) {
             <hr />
 
             <form id="editEntry" method="POST" action={`/editEntry/${tempId}`}>
-
+            <h3>{entry.title}</h3>
                 <label>Title:
-                    <h3>{entry.title}</h3>
+                    
                     <input
                         id="editTitle"
                         name="title"
@@ -62,7 +63,7 @@ function EditDelete(props) {
                         id="editDate"
                         name="date"
                         type="text"
-                        value={entry.date}
+                        value={moment(entry.date).format('llll')}
                     />
                 </label>
                 <label id='tagTitle'>Choose Tag for your Entry:
@@ -74,13 +75,13 @@ function EditDelete(props) {
                         onChange={(event) => setEntry({ tags: event.target.value })}
                     />
                 </label>
-                <input id="editButton" type='submit' value='Edit' />
-     </form>
-          
-                <button id="deleteButton" onClick={deleteEntry}>
-                    Delete
+                <input id="editButton" type='submit' value='Update' />
+            
+
+            <button id="deleteButton" onClick={deleteEntry}>
+                Delete
       </button>
-      
+      </form>
             <Modal
                 modal={modal}
                 setModal={setModal}
@@ -90,19 +91,4 @@ function EditDelete(props) {
     );
 }
 export default EditDelete;
- /*  //<Link to={"/Facts/"}>
- <div id='tag-right'>
-                       <label>React<input className='tag-right' type="checkbox" name="tag" value={entry.react} /></label>
-                       <label>CSS<input className='tag-right' type="checkbox" name="tag" value={entry.css} /></label>
-                       <label>JavaScript<input className='tag-right' type="checkbox" name="tag" value={entry.javascript} /></label>
-                       <label>MongoDB<input className='tag-right' type="checkbox" name="tag" value={entry.mongodb} /></label>
-                       <label>HTML<input className='tag-right' type="checkbox" name="tag" value={entry.html} /></label>
-                   </div>
-                   <div id='tag-left'>
-                       <label>Lifestyle<input className='tag-left' type="checkbox" name="tag" value={entry.lifestyle} /></label>
-                       <label>Elephants<input className='tag-left' type="checkbox" name="tag" value={entry.elephants} /></label>
-                       <label>Personal<input className='tag-left' type="checkbox" name="tag" value={entry.personal} /></label>
-                       <label>Cows<input className='tag-left' type="checkbox" name="tag" value={entry.cows} /></label>
-                       <label>Games<input className='tag-left' type="checkbox" name="tag" value={entry.games} /></label>
-                   </div>*/
 

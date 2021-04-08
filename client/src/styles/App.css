@@ -88,23 +88,24 @@ label {
 }
 
 /*---------------------------------EditDelete Page--------------------------------*/
-#editDelete-container{
- display: inline-block;
- flex-direction: column;
- align-items: space-around;
- justify-items: center;
-  
-}
+
 
 #editButton #deleteButton{
-  width: 10vw;
+  width: 60vw;
 }
 
 #editButton #deleteButton:hover {
+  
   cursor: pointer;
 }
 
-/*---------------------------------Modal-page--------------------------------*/
+#editEntry{
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
+
+  /*---------------------------------Modal-page--------------------------------*/
 #modalButtons {
   font-size: 2rem;
   color: darkblue;
@@ -125,4 +126,17 @@ label {
 }
 
 
+#FactsContainer {
+ 
+  border: 2px  #f4c2c2;
+  margin-bottom: 3%;
+  margin-left: 1%;
+  width: 30vw;
+  background-color: #f4c2c2;
+}
 
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

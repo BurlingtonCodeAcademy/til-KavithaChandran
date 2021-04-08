@@ -5,8 +5,10 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
+const moment = require("moment");
+
 mongoose.set("useFindAndModify", false);
-const { readdir } = require("fs")
+
 //const user = process.env.USER
 //const password = process.env.PASSWORD
 
@@ -17,13 +19,13 @@ const staticDir = path.resolve('./client/public')
 const app = express()
 //mongoose.set("useFindModify", false)
 
-//imports for authentication purpose
-//const passport = require('passport')
+
 
 //server set-up-middleware req  for set-up and read the body
 app.use(express.static(staticDir))
 app.use(express.urlencoded({ extended: true }))
-//app.use(passport.initialize())
+app.use(express.json())
+
 
 //set-up to the database(local)
 mongoose.connect('mongodb://localhost:27017/tilEntries',
@@ -43,12 +45,12 @@ const EntrySchema = new mongoose.Schema({
   title: String,
   content: String,
   date: Date,
-  tags: Array,
-  //tags:[{type:String}]
+  tags: [{ type: String }],
+
 })
 //mongoose collection and schema is assigned to a reference model
 const EntryModel = mongoose.model('entries', EntrySchema)
-
+EntryModel.createIndexes()
 //routing to public folder
 //app.use(express.static("./public"))
 
@@ -56,12 +58,15 @@ const EntryModel = mongoose.model('entries', EntrySchema)
 
 //add a single entry using the user's input
 app.post('/addEntry', async (req, res) => {
+
+  let entryTime = moment().format('llll')
   //Uses a newVariable to store the input
   let newEntry = new EntryModel({
     title: req.body.title,
     content: req.body.content,
-    date: new Date().getTime(),
+    date: entryTime,
     tags: req.body.tags,
+
   })
   //accepts new entry and stores in the db
   await newEntry.save(function (err) {
@@ -73,7 +78,7 @@ app.post('/addEntry', async (req, res) => {
 //List all entries 
 app.get("/api", async (req, res) => {
   // find all documents in the entry collection (as defined above)
-  const cursor = await EntryModel.find({})
+  const cursor = await EntryModel.find({}).sort({date: -1})
   // create empty array to hold our results
   let results = [];
   // iterate over out cursor object to push each document into our array
@@ -94,17 +99,42 @@ app.get("/filter", async (req, res) => {
   console.log(key)
   let temp = filter[key]
   console.log(temp)
-  const cursor = await EntryModel.find({ [key]: `${temp}` });
+  const cursor = await EntryModel.find({ [key]: `${temp}` }).sort({date: -1})
   let results = [];
 
   // iterate over out cursor object to push each document into our array
   await cursor.forEach((entry) => {
     results.push(entry);
   })
+  console.log(results)
   res.json(results);
 
 });
+//--------------------------------------------------------------------------------
 
+//Full text Search
+app.get("/search", async (req, res) => {
+  //The variable query is assigned to get the query from front-end
+  let query = req.query;
+  let key = Object.keys(query)[0];
+  //this gives just the value of query
+  let temp = query[key];
+  console.log(temp);
+  // Full text search using the wildcard specifier,allows text search on all fields
+  await EntryModel.createIndexes({ "$**": "text" });
+  //querying the database using the query filters
+  const cursor = await EntryModel.find({ $text: { $search: temp } });
+
+  console.log(cursor);
+  // create empty array to hold our results
+  let results = [];
+  await cursor.forEach((entry) => {
+    results.push(entry);
+  });
+
+  // send the resulting array back as a json
+  res.json(results);
+});
 //---------------------------------------------------------------------------
 
 //return a specific entry/post  data from database
@@ -120,13 +150,15 @@ app.get('/api/:id', async (req, res) => {
 //edit an entry from database
 app.post('/editEntry/:id', async (req, res) => {
   let id = req.params.id
-await EntryModel.findOneAndUpdate(
+  await EntryModel.findOneAndUpdate(
     { _id: id },
     {
       title: req.body.title,
-      date: Date.now(),
+      //date: Date.now(),
       content: req.body.content,
-      tags: req.body.tags, 
+      tags: req.body.tags,
+      username: req.body.username,
+      password: req.body.password,
     },
     {
       new: true,
@@ -146,11 +178,14 @@ app.get('/delete/:id', async (req, res) => {
 })
 
 
+
 //--------------------------------------------------------------------------------
 //set up to catch all route 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve('./client/public/index.html'))
 });
+
+
 
 // set up server to listen to requests at the port specified
 app.listen(port, () => {
