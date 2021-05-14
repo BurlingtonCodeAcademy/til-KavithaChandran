@@ -45,10 +45,13 @@ h3{
   width: calc(50vw - 8px);
   font-size: 1.5rem;
 }
+#formTitle{
+ width: 49vw
+}
 
 #formText {
   margin-top: 5px;
-   width: calc(50vw - 7px);
+   width: calc(50vw - 6px);
   font-size: 1.5rem;
   height: 30vh;
 }
