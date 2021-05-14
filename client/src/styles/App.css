@@ -82,7 +82,7 @@ label {
 height:6vh;
 font-size: 1rem;
 border-radius: 10px;
-color:darkblue
+background-color: #e7472e;
 }
 
 #submit:hover {
