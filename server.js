@@ -6,12 +6,13 @@ const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
 const moment = require("moment");
+//login import
+const cors = require('cors')
 
 mongoose.set("useFindAndModify", false);
 
 //const user = process.env.USER
 //const password = process.env.PASSWORD
-
 
 //global variables
 const port = process.env.PORT || 5000
@@ -25,7 +26,13 @@ const app = express()
 app.use(express.static(staticDir))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cors())
 
+/*app.use('/', (req, res) => {
+  res.send({
+    token: 'test123'
+  });
+})*/
 
 //set-up to the database(local)
 mongoose.connect('mongodb://localhost:27017/tilEntries',
@@ -157,8 +164,8 @@ app.post('/editEntry/:id', async (req, res) => {
       //date: Date.now(),
       content: req.body.content,
       tags: req.body.tags,
-      username: req.body.username,
-      password: req.body.password,
+      //username: req.body.username,
+      //password: req.body.password,
     },
     {
       new: true,
@@ -174,7 +181,7 @@ app.get('/delete/:id', async (req, res) => {
   let id = req.params.id
   //id is passed here as ObjectId to be deleted
   await EntryModel.findOneAndDelete({ _id: id })
-  res.sendStatus(200)
+//res.sendStatus(200)
 })
 
 

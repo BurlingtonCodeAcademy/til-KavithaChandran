@@ -15,8 +15,9 @@ function NavBar(props) {
                 //toggle button is set so the nav buttons are displayed only when it is pressed
                 style={hidden ? { backgroundColor: 'blue', color: 'white' } : { backgroundColor: 'liteBlue' }}
             >Toggle Nav</button>
-            <Link to={"/"}><h1><span>Today I Learned-My Online Journal</span>
-            </h1></Link>
+            <div id='nav-header'>
+            <Link to={"/"}><h1 ><span>Today I Learned-My Online Journal</span>
+            </h1></Link></div>
             <header id='nav-bar' style={hidden ? { display: 'none' } : { display: 'flex' }}>
                 {/* linked to the home button */}
                 <Link id='NavContainerLink' to={"/"}>Home

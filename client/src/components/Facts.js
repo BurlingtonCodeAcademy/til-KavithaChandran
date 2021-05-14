@@ -61,20 +61,20 @@ function Facts(props) {
 
   return (
     <div>
-      
-
+      <div id='search-filter'>
       <form value={search} onChange={searchChange} onSubmit={searchQuery}>
-        <input type="text" name="search" placeholder="Search:" />
-        <button type="submit" value="Search">
+        <input id='pick-a-filter' type="text" name="search" placeholder="Search:" />
+        <button id="remove-all-filters" type="submit" value="Search">
           Search
         </button>
       </form>
-      <h2>Journal Entries</h2>
+     
       <div id="searchContainer">
-        <div>Filter by:{selected}</div>
+      <div id ='Filter'>
+        <div id='pick-a-filter'>Filter by:{selected}</div>
         {/* to filter the entries according to their values */}
-        <select name="selection" value={selected} onChange={handleChange}>
-          <option value="">Categories</option>
+        <select id= "filter-options" name="selection" value={selected} onChange={handleChange}>
+          <option value="">Pick a Category:</option>
           <option value="title">Title</option>
           <option value="content">Content</option>
           <option value="tags">Tag</option>
@@ -85,9 +85,9 @@ function Facts(props) {
           {selected && (
             <form id="filterContainer" onSubmit={filter}>
               <label>
-                <input type="text" name="filter" placeholder="Filter:" />
+                <input id='user-input' type="text" name="filter" placeholder="Filter:" />
               </label>
-              <input type="submit" value="Filter" />
+              <input id='filter-button' type="submit" value="Filter" />
             </form>
             /* if results are filtered button shows offering option to remove filters */
           )}
@@ -97,15 +97,17 @@ function Facts(props) {
             Remove All Filters
           </button>
         </Link>
-
+ </div>
+ </div>
         {entryPost.map((entry, index) => {
           return (
             <div id="FactsContainer">
+            <h3>Journal Entry:</h3>
               <hr />
-              <h2 key={index + "-title"}>{entry.title}</h2>
-              <p key={index + "-content"}>{entry.content}</p>
-              <h4 key={index + "-date"}>{moment(entry.date).format("llll")}</h4>
-              <h4 key={index + "-tags"}>{entry.tags + " "}</h4>
+              <h3 classname='title' key={index + "-title"}>{entry.title}</h3>
+              <p classname='title'key={index + "-content"}>{entry.content}</p>
+              <h4 classname='title'key={index + "-date"}>{moment(entry.date).format("llll")}</h4>
+              <h4 classname='title' key={index + "-tags"}>{entry.tags + " "}</h4>
 
               <Link id="editButtonLink" to={"/EditDelete/" + entry._id}>
                 <button id={entry._id + "-editEntry"}>

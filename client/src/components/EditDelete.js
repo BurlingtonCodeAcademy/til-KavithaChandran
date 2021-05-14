@@ -33,11 +33,11 @@ function EditDelete(props) {
 
     return (
         <div id='editDelete-container'>
-            <h2>Make the Changes</h2>
+            <h3>Make Changes If Required:</h3>
             <hr />
 
             <form id="editEntry" method="POST" action={`/editEntry/${tempId}`}>
-            <h3>{entry.title}</h3>
+            <h3>Originally Submitted:{entry.title}</h3>
                 <label>Title:
                     
                     <input
@@ -50,7 +50,7 @@ function EditDelete(props) {
                 </label>
                 <label>Content:
                     <textarea
-                        id="editContent"
+                        id="formText"
                         name="content"
                         type="textarea"
                         placeholder="Enter your Journal Entry here:"
@@ -77,11 +77,11 @@ function EditDelete(props) {
                 </label>
                 <input id="editButton" type='submit' value='Update' />
             
-
+</form>
             <button id="deleteButton" onClick={deleteEntry}>
                 Delete
       </button>
-      </form>
+      
             <Modal
                 modal={modal}
                 setModal={setModal}

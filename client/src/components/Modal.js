@@ -15,9 +15,9 @@ function Modal(props) {
                 <div id="modalButtons">
                     {/*the two button which pops-up, confirms the delete and it deletes the entry */}
                     <Link id='confirmModel' to={"/Facts/"}>
-                    <button onClick={confirm}>Confirm</button>
+                    <button id='confirm'onClick={confirm}>Confirm</button>
                     </Link>
-                    <button onClick={cancel}>Cancel</button>
+                    <button id='cancel' onClick={cancel}>Cancel</button>
                 </div>
             </div>
         </div>
