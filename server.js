@@ -16,7 +16,7 @@ mongoose.set("useFindAndModify", false);
 
 //global variables
 const port = process.env.PORT || 5000
-const staticDir = path.resolve('./client/public')
+const staticDir = path.resolve('./client/build')
 const app = express()
 //mongoose.set("useFindModify", false)
 
@@ -189,7 +189,7 @@ app.get('/delete/:id', async (req, res) => {
 //--------------------------------------------------------------------------------
 //set up to catch all route 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve('./client/public/index.html'))
+  res.sendFile(path.resolve('./client/build/index.html'))
 });
 
 
