@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-   "engines": {
+  "engines": {
     "node": "15.6.0",
     "npm": "7.4.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-   "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "start": "node server.js",
     "start:dev": "nodemon --watch"
   },
@@ -26,7 +26,8 @@
     "moment": "^2.29.1",
     "mongoose": "^5.11.19",
     "react-moment": "^1.1.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "serve": "^11.3.2"
   },
   "devDependencies": {
     "cors": "^2.8.5",
