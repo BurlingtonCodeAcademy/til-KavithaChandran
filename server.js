@@ -16,14 +16,14 @@ mongoose.set("useFindAndModify", false);
 
 //global variables
 const port = process.env.PORT || 5000
-const staticDir = path.resolve('./client/build')
 const app = express()
+const MONGODB_URI = process.env.MONGODB_URI;
 //mongoose.set("useFindModify", false)
 
 
 
 //server set-up-middleware req  for set-up and read the body
-app.use(express.static(staticDir))
+app.use(express.static("./client/build"))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
@@ -35,7 +35,7 @@ app.use(cors())
 })*/
 
 //set-up to the database(local)
-mongoose.connect('mongodb://localhost:27017/tilEntries',
+mongoose.connect(MONGODB_URI || 'mongodb://localhost:27017/tilEntries',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
