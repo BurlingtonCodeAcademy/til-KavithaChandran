@@ -17,7 +17,7 @@ mongoose.set("useFindAndModify", false);
 //global variables
 const port = process.env.PORT || 5000
 const app = express()
-const URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 //mongoose.set("useFindModify", false)
 
 
@@ -35,7 +35,7 @@ app.use(cors())
 })*/
 
 //set-up to the database(local)
-mongoose.connect(URI || 'mongodb://localhost:27017/tilEntries',
+mongoose.connect(MONGODB_URI || 'mongodb://localhost:27017/tilEntries',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
