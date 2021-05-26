@@ -35,7 +35,7 @@ app.use(cors())
 })*/
 
 //set-up to the database(local)
-mongoose.connect(MONGODB_URI || 'mongodb://localhost:27017/tilEntries',
+mongoose.connect(URI || 'mongodb://localhost:27017/tilEntries',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
