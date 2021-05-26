@@ -17,7 +17,7 @@ mongoose.set("useFindAndModify", false);
 //global variables
 const port = process.env.PORT || 5000
 const app = express()
-const MONGODB_URI = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 //mongoose.set("useFindModify", false)
 
 
