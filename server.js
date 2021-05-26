@@ -17,9 +17,9 @@ mongoose.set("useFindAndModify", false);
 //global variables
 const port = process.env.PORT || 5000
 const app = express()
-const MONGODB_URI = process.env.MONGODB_URI;
+//const MONGODB_URI = process.env.MONGODB_URI;
 //mongoose.set("useFindModify", false)
-
+const mongoAtlasUri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.lk4cd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
 
 //server set-up-middleware req  for set-up and read the body
@@ -35,7 +35,7 @@ app.use(cors())
 })*/
 
 //set-up to the database(local)
-mongoose.connect(MONGODB_URI || 'mongodb://localhost:27017/tilEntries',
+mongoose.connect(mongoAtlasUri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
