@@ -22,7 +22,7 @@ const app = express()
 //mongoose.set("useFindModify", false)
 
 //const uri = process.env.MONGODB_URI;
-const mongoAtlasUri=`mongodb+srv://kavitha:f3bYxFhBb2dsJTX3@cluster0.ssmit.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+const mongoAtlasUri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.ssmit.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 //server set-up-middleware req  for set-up and read the body
 app.use(express.static("./client/build"))
 app.use(express.urlencoded({ extended: true, 
