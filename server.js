@@ -17,11 +17,11 @@ mongoose.set("useFindAndModify", false);
 //global variables
 const port = process.env.PORT || 5000
 const app = express()
-const MONGODB_URI = process.env.MONGODB_URI;
+//const MONGODB_URI = process.env.MONGODB_URI;
 //mongoose.set("useFindModify", false)
 
 
-//const mongoAtlasUri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}<password>@cluster0.lk4cd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+const mongoAtlasUri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}<password>@cluster0.lk4cd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 //server set-up-middleware req  for set-up and read the body
 app.use(express.static("./client/build"))
 app.use(express.urlencoded({ extended: true }))
@@ -35,7 +35,7 @@ app.use(cors())
 })*/
 
 //set-up to the database(local)
-mongoose.connect(MONGODB_URI ,
+mongoose.connect(mongoAtlasUri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -189,7 +189,7 @@ app.get('/delete/:id', async (req, res) => {
 //--------------------------------------------------------------------------------
 //set up to catch all route 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve('./client/build/index.html'))
+  res.sendFile(path.resolve("./client/build/index.html"))
 });
 
 
