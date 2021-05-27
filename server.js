@@ -22,7 +22,7 @@ const app = express()
 //mongoose.set("useFindModify", false)
 
 
-const mongoAtlasUri=`mongodb+srv://kavitha:1RIHWvcdQOvqt8hG@cluster0.lk4cd.mongodb.net/tilEntriesDB?retryWrites=true&w=majority`
+const mongoAtlasUri=`mongodb+srv://kavitha:YC24RRPETZA6VvNS@cluster0.lk4cd.mongodb.net/tilEntriesDB?retryWrites=true&w=majority`
 //server set-up-middleware req  for set-up and read the body
 app.use(express.static("./client/build"))
 app.use(express.urlencoded({ extended: true, 
