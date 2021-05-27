@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true,
 useNewUrlParser:true,
 useUnifiedTopology:true,
 }))
-//app.use(express.json())
+app.use(express.json())
 //app.use(cors())
 
 /*app.use('/', (req, res) => {
