@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const path = require('path')
 const moment = require("moment");
 //login import
-const cors = require('cors')
+//const cors = require('cors')
 const {ObjectId, MongoClient} =require ("mongodb")
 mongoose.set("useFindAndModify", false);
 
@@ -29,8 +29,8 @@ app.use(express.urlencoded({ extended: true,
 useNewUrlParser:true,
 useUnifiedTopology:true,
 }))
-app.use(express.json())
-app.use(cors())
+//app.use(express.json())
+//app.use(cors())
 
 /*app.use('/', (req, res) => {
   res.send({
