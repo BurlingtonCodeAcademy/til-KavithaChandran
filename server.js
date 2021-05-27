@@ -8,7 +8,7 @@ const path = require('path')
 const moment = require("moment");
 //login import
 const cors = require('cors')
-const {ObjectId} =require ("mongodb")
+const {ObjectId, MongoClient} =require ("mongodb")
 mongoose.set("useFindAndModify", false);
 
 //const user = process.env.USER
@@ -16,6 +16,7 @@ mongoose.set("useFindAndModify", false);
 
 //global variables
 const port = process.env.PORT || 5000
+
 const app = express()
 //const MONGODB_URI = process.env.MONGODB_URI;
 //mongoose.set("useFindModify", false)
@@ -24,7 +25,10 @@ const app = express()
 const mongoAtlasUri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.lk4cd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 //server set-up-middleware req  for set-up and read the body
 app.use(express.static("./client/build"))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true, 
+useNewUrlParser:true,
+useUnifiedTopology:true,
+}))
 app.use(express.json())
 app.use(cors())
 
