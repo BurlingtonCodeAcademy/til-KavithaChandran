@@ -6,6 +6,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
 const moment = require("moment");
+const app = express()
 //login import
 //const cors = require('cors')
 const {ObjectId, MongoClient} =require ("mongodb")
@@ -16,18 +17,28 @@ mongoose.set("useFindAndModify", false);
 
 //global variables
 const port = process.env.PORT || 5000
+const staticDir = process.env.PRODUCTION
+  ? path.resolve("./client/build")
+  : path.resolve("./client/public");
 
-const app = express()
 //const MONGODB_URI = process.env.MONGODB_URI;
 //mongoose.set("useFindModify", false)
 
 //const uri = process.env.MONGODB_URI;
-//const mongoAtlasUri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.ssmit.mongodb.net/til?retryWrites=true&w=majority`
+const mongoAtlasUri=`mongodb+srv://kavitha:aP3K0aEfoIOSxe4P@til-project.e8qqp.mongodb.net/tilEntries?retryWrites=true&w=majority`
 //server set-up-middleware req  for set-up and read the body
-app.use(express.static("./client/build"))
-app.use(express.urlencoded({ extended: true
-}))
+//app.use(express.static("./client/build"))
+//app.use(express.urlencoded({ extended: true
+//}))
 app.use(express.json())
+app.use(express.static(staticDir));
+app.use(
+  express.urlencoded({
+    extended: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+)
 //app.use(cors())
 
 /*app.use('/', (req, res) => {
@@ -35,9 +46,9 @@ app.use(express.json())
     token: 'test123'
   });
 })*/
-const MONGODB_URI = process.env.MONGODB_URI;
+//const MONGODB_URI = process.env.MONGODB_URI;
 //set-up to the database(local)
-mongoose.connect(MONGODB_URI || "mongodb://localhost:27017/tilEntries",
+mongoose.connect(mongoAtlasUri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
