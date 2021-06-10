@@ -25,7 +25,7 @@ const staticDir = process.env.PRODUCTION
 //mongoose.set("useFindModify", false)
 
 //const uri = process.env.MONGODB_URI;
-const mongoAtlasUri=`mongodb+srv://kavitha:aP3K0aEfoIOSxe4P@til-project.e8qqp.mongodb.net/tilEntries?retryWrites=true&w=majority`
+const mongoAtlasUri=`mongodb+srv://kavitha:aP3K0aEfoIOSxe4P@log.e8qqp.mongodb.net/tilEntries?retryWrites=true&w=majority`
 //server set-up-middleware req  for set-up and read the body
 //app.use(express.static("./client/build"))
 //app.use(express.urlencoded({ extended: true
