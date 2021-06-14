@@ -1,18 +1,36 @@
 {
-  "name": "til-react-2021",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "create-react-app": "^4.0.3",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.11.19"
+    "name": "til-react-2021",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "engines": {
+      "node": "15.6.0",
+      "npm": "7.4.0"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "heroku-postbuild": "cd client && npm install && npm run build",
+      "start": "node server.js",
+      "start:dev": "nodemon --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.19.0",
+      "create-react-app": "^4.0.3",
+      "dotenv": "^8.2.0",
+      "express-validator": "^6.10.0",
+      "jsonwebtoken": "^8.5.1",
+      "moment": "^2.29.1",
+      "mongoose": "^5.11.19",
+      "react-moment": "^1.1.1",
+      "react-router-dom": "^5.2.0",
+      "serve": "^11.3.2"
+    },
+    "devDependencies": {
+      "cors": "^2.8.5",
+      "express": "^4.17.1"
+    }
   }
-}
